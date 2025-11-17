@@ -1,8 +1,10 @@
 import {Router} from "express";
 import {
     addScore,
-    addStudent, countByNames,
-    deleteStudent, findByMinScore,
+    addStudent,
+    countByNames,
+    deleteStudent,
+    findByMinScore,
     findByName,
     findStudent,
     updateStudent

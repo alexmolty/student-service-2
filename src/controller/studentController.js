@@ -21,7 +21,7 @@ export const findStudent = async (req, res) => {
 
 export const updateStudent = async (req, res) => {
     const {error} = updateSchema.validate(req.body);
-    if(error){
+    if (error) {
         return res.status(400).json({error: error.details[0].message});
     }
     const student = await service.updateStudent(+req.params.id, req.body);
@@ -43,7 +43,7 @@ export const deleteStudent = async (req, res) => {
 
 export const addScore = async (req, res) => {
     const {error} = scoreSchema.validate(req.body);
-    if(error){
+    if (error) {
         return res.status(400).json({error: error.details[0].message});
     }
     const success = await service.addScore(+req.params.id, req.body.examName, +req.body.score);
@@ -61,6 +61,12 @@ export const countByNames = async (req, res) => {
 }
 
 export const findByMinScore = async (req, res) => {
+    const {error} = scoreSchema.validate({
+        examName: req.params.exam, score: req.params.minScore
+    });
+    if (error) {
+        return res.status(400).json({error: error.details[0].message});
+    }
     const students = await service.findByMinScore(req.params.exam, +req.params.minScore);
     return res.json(students);
 }
