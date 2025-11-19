@@ -12,9 +12,9 @@ const studentSchema = new mongoose.Schema({
     toJSON: {
         transform(doc, ret) {
             const {_id, ...rest} = ret
-            return {id: _id, ...rest}  // id первым
+            return {id: _id, ...rest}
         }
     }
 })
-const Student = mongoose.model('Student', studentSchema, 'college');
+const Student = mongoose.model('Student', studentSchema, 'students');
 export default Student;
