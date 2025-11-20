@@ -1,7 +1,7 @@
 // ARRANGE, ACT, ASSERT PATTERN
 import {jest, describe, beforeEach, test, expect} from '@jest/globals'
 
-// Мокаем модуль репозитория до импорта сервиса
+// Mock the repository module before importing the service
 const repoMock = {
     createStudent: jest.fn(),
     findStudentById: jest.fn(),
@@ -17,7 +17,7 @@ jest.unstable_mockModule('../repository/studentRepository.js', () => ({
     ...repoMock,
 }))
 
-// Динамический импорт после мокапа
+// Dynamic import after mocking
 const service = await import('../service/studentService.js')
 const repo = await import('../repository/studentRepository.js')
 
